@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #f2f2f2;
   margin: 0px;
   font-family: tahoma;
@@ -179,4 +179,82 @@ ul {
   .review-form {
     width: 90%;
   }
+} */
+/* 云班课页面 */
+.workC{
+  width:1600px;
+  height: 700px;
+  
+  margin:100px auto;
+  /* border:1px solid pink; */
+ 
+   position: relative;  
+   cursor: pointer;
+}
+.c1{
+  position: relative;
+ width: 220px;
+ height: 320px;
+ border:1px solid grey;
+ /* display: flex; */
+ float: left;
+ margin-right: 20px;
+ border-radius: 8px;
+ /* border-bottom-right-radius: 8px;
+ border-bottom-left-radius: 8px; */
+}
+.imagePP{
+  position: absolute;
+ width: 220px;
+ height: 220px;
+ border-top-right-radius: 8px;
+ border-top-left-radius: 8px;
+ /* align-items: center; */
+}
+ .imageTT{
+  width: 220px;
+  height: 50px;
+  position: absolute;
+  bottom: 100px;
+  
+}
+.imageLL{
+  width: 220px;
+ height: 220px;
+  /* top: 10px; */
+  position: absolute;
+  /* 浮动在最上层 */
+  /* z-index: 999; */
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.teacher{
+height: 70px;
+/* border:1px solid black; */
+display: flex;
+}
+.teacher img{
+  position: relative;
+ /* position: absolute; */
+ width: 60px;
+ height: 60px;
+ left: 80px;
+ bottom: 30px;
+ border-radius: 50%;
+ border:1px solid #fff;
+ float: left;
+ 
+}
+.ttname{
+  position: absolute;
+  bottom: 60px;
+  padding-left: 70px;
+ align-items: center;
+ font-size: 15px;
+ float: left;
+}
+.c11{
+  position: absolute;
+ padding-left: 30px;
+ bottom: 10px;
+ /* height: 100px; */
 }
