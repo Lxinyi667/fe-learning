@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class='container'>
+  <view class='listGroup' wx:for='{{list}}' wx:for-item='group' wx:key='group{{index}}'>
+    <!-- <view class='listItem'wx:for='{{group}}' wx:for-item='row' wx:key='row{{index}}'> -->
+      <image class='imagePP' src='{{group.imageP}}'></image>
+        <image wx:if='{{group.flag}}' class='imageLL' src='{{group.imageL}}'></image>
+      <image class='imageHH' src='{{group.imageH}}'></image>
+      <text class="ttname">{{group.tname}}</text>
+      <text class="cname">{{group.cname}}</text>
+      <text class="cclass">{{group.class}}</text>
+      <view class="enter" style="color: blueviolet;">
+      <text wx:if="{{group.flag}}" style="color: red;">删除>></text>
+      <text wx:else="{{group.flag}}">进入>></text>
+  </view>
+    <!-- </view> -->
+</view>
+</view>
