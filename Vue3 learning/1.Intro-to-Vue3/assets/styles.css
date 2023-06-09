@@ -1,4 +1,4 @@
-/* body {
+body {
   background-color: #f2f2f2;
   margin: 0px;
   font-family: tahoma;
@@ -179,7 +179,7 @@ ul {
   .review-form {
     width: 90%;
   }
-} */
+}
 /* 云班课页面 */
 .workC{
   width:1600px;
@@ -202,6 +202,7 @@ ul {
  border-radius: 8px;
  /* border-bottom-right-radius: 8px;
  border-bottom-left-radius: 8px; */
+ /* overflow: hidden; */
 }
 .imagePP{
   position: absolute;
@@ -210,6 +211,10 @@ ul {
  border-top-right-radius: 8px;
  border-top-left-radius: 8px;
  /* align-items: center; */
+}
+.imagePP:hover {
+  /* transform: scale(1.2); */
+  /* transition: all 0.6s; */
 }
  .imageTT{
   width: 220px;
@@ -254,7 +259,26 @@ display: flex;
 }
 .c11{
   position: absolute;
- padding-left: 30px;
- bottom: 10px;
+  width: 220px;
+ padding-left: 10px;
+ bottom: 5px;
+ display: flex;
  /* height: 100px; */
+}
+.c11 .cname{
+  position: absolute;
+  float: left;
+  bottom:20px;
+}
+.c11 .cclass{
+  position: absolute;
+  float: left;
+  bottom: 8px;
+}
+.c11 .center{
+ width: 60px;
+ position: absolute;
+  float: right;
+  right: 10px;
+bottom: 4px;
 }

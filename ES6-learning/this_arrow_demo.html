@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用箭头函数解决this的指向问题</title>
+</head>
+<body>
+    <script>
+        // ES6 写法
+        // this总是指向调用它的对象
+        var title = '全局标题'
+        var obj = {
+            title :`ES6 学习`,
+            getTitle:() => {
+                console.log('11111111');
+                console.log(this.title);
+            },
+        }
+        // 在箭头函数中，没有this,
+        //所以它会意味着它的父类，也就是window,即指向全局的title
+        // 全局标题
+        obj.getTitle()      //ES6 学习
+        var bar = obj.getTitle      //bar属于谁？ window 下的方法
+        bar()    
+        //全局，调用bar方法的是：window对象，所以打印window下的title
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+        <!-- 引入 -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <script src="./main1.js"></script>
+        <link rel="stylesheet" href="./style1.css">
+        <script src="./components/ProductList1.js"></script>
+        <!-- 引入需要使用的组件 -->
+        <script src="./components/ProductDetail.js"></script>
+        <script></script>
+
+    <title>Socks组件渲染</title>
+    
+</head>
+<body>
+
+
+    <div id="app">
+        <!-- 顶部导航栏 -->
+        <div class="nav-bar">
+                <div class="cart">Cart({{cart}})</div>
+                <div class="detail-button" @click="showDetail">详情组件</div>
+                <button class="list-button" @click="showList" 
+                style="background-color:rgb(240, 176, 240);border:none;">列表组件</button>
+                
+        </div>
+
+        <!--需要渲染的组件 -->
+      
+            <divg v-show="list">
+                <product-list :free="true" :products="products" 
+				@add-to-cart="updateCart" @remove-to-cart="subCart" >
+                </product-list>
+            </div>
+
+            <!-- <product-detail :p="products[0]"></product-detail> -->
+
+            <div class="detail-container" v-show="detail">
+				<div v-for="p in products">
+					<product-detail :p="p" @add-to-cart="updateCart"></product-detail>
+                </div>
+			</div>
+    </div>
+
+    <script>
+        const mountedApp = app.mount("#app");
+    </script> 
+</body>
+</html>

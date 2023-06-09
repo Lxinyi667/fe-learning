@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航栏 -->
+        <div class="nav-bar">
+            <div class="cart" @click="addToCart">Cart({{cart}})</div>
+            <div class="detail-button" @click="showDetail">详情组件</div>
+            <div class="list-button" @click="showList">列表组件</div>
+        </div>
+        
+        <!--需要渲染的组件 -->
+        <div v-show="list">
+            <product-display 
+            :free="true" :products="products" 
+            @add-to-cart="updateCart" @remove-to-cart="subCart">	
+            </product-display>
+        </div>
+        
+        
+        <div class="detail-container" v-show="detail">
+            <template v-for="p in products">
+                <product-detail :p="p" @add-to-cart="updateCart"></product-detail>
+            </template>
+        </div>
+
+    </div>
+    <!-- 引入 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./main.js"></script>
+    <!-- 引入需要使用的组件 -->
+    <script src="./components/ProductDetail.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>
+</html>

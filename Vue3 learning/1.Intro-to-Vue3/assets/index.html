@@ -16,6 +16,48 @@
 
         <div class="product-display">
             <div class="product-container">
+                <div class="product-image" 
+                    :class="[ inStock ? '' : 'out-of-stock-img' ]">
+                    <img v-bind:src="image" :alt="product">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product }}</h1>
+                    <p>{{ description }}</p>
+                    <!-- <a :href="url">Vue 3 官网</a> -->
+                    <div v-if="inStock">In Stock</div>
+                    <div v-else>Out of Stock</div>
+    
+                    <!-- <button class="button" v-show="stock > 10">按钮</button> -->
+                    
+                    <ul>
+                        <li v-for="(item, index) in details" :key="index">
+                            {{item}}
+                        </li>
+                    </ul>
+                    <h2>COLOR</h2>
+                    <div v-for="variant in variants" :key="variant.id" 
+                        @mouseover="updateImage(variant.image)" 
+                        class="color-circle"
+                        :style="{ backgroundColor: variant.color }">
+                      </div>
+                    <h2>SIZE</h2>
+                    <div v-for="(item, index) in sizes" :key="index">
+                        {{ item }}
+                    </div>
+                    <span> Cart ( {{cart}} ) </span>
+                    <button class="button"
+                        :class="{disabledButton: !inStock}"
+                        :disabled="!inStock" 
+                        @click="addToCart">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="nav-bar"></div>
+
+        <div class="product-display">
+            <div class="product-container">
             
             <div class="product-image">
                 <img v-bind:src="image">
@@ -25,12 +67,12 @@
                 <h1>{{product}}</h1>
                 <p>{{description}}</p>
                 <a :href="url">https://cn.vuejs.org/</a>
-                <!-- v-if指令 -->
-                <p v-if="inStock">In Stock</p>
+                v-if指令
+                <!-- <p v-if="inStock">In Stock</p>
                 <p v-else>Out of Stock</p>
                 <div>
-                    <button :disabled="count<10" v-if="inStock">button Open</button>
-                </div>
+                    <button :disabled="count < 10" v-if="inStock">button Open</button>
+                </div> --> -->
             
             <!-- 列表渲染显示袜子 -->
                 <!-- <div v-for="(item,index) in details" :key="index">
@@ -42,10 +84,10 @@
             <!--显示云班课班级  -->
             
 
-            </div>
+            <!-- </div> -->
             <div class="workC" style="border:1px solid pink;">
                 <div v-for="(item,index) in clouds" :key="index" class="c1">
-                    <img v-bind:src="item.imageP" class="imagePP" @mouseenter="changeShow(index)">
+                    <img v-bind:src="item.imageP" class="imagePP" @mouseenter="changeShow(index)" @mouseleave="changeShow(index)">
                     <img v-show="item.show" v-bind:src="item.imageT" class="imageTT"  >
                     <div v-if="item.flag" class="imageLL">
                         <img v-bind:src="item.imageL" > 
@@ -56,7 +98,11 @@
                     </div>
                     <div class="c11">
                         <p class="cname">{{item.cname}}</p>
-                        <spap style="color:grey;">{{item.class}}</span>
+                        <span style="color:grey;" class="cclass">{{item.class}}</span>
+                        <p class="center" style="color:rgb(61, 165, 231)">
+                            <span v-if="item.flag" style="color:red">删除>></span>
+                            <span v-else="item.flag">进入>></span>
+                        </p> 
                     </div>
                 </div>
             </div>
@@ -69,6 +115,6 @@
      <script>   
         const mountedApp = app.mount('#root')
     </script>
-    <!-- 应用的挂载fin -->
+    <!-- 应用的挂载finish -->
 </body>
 </html>

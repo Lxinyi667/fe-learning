@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>组件练习</title>
+</head>
+<body>
+    <img src="../3.选项卡/assets/images/14.JPG" alt="">
+    <div id="root">
+        <h2>组件</h2><br />
+        <div id="root1">
+            <product-list :list="arr" ></product-list>
+            <product-object :myobject="sss" :myobjet="sss1"></product-object>
+        </div>
+        
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./main.js"></script>
+    <!-- 引入组件 -->
+    <script src="./components/ProductList.js"></script>
+    <script src="./components/ProductObject.js"></script>
+    <script>
+        const mountedApp = app.mount("#root");
+    </script> 
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+    <div class="container">
+        <h1>计数器</h1>
+        <span id="value" :value="count" :style="{color:resColor}">{{count}}</span>
+        <div class="button-container">
+            <button class="btn decrease" @click="decrease">减</button>
+            <button class="btn reset" @click="reset">重置</button>
+            <button class="btn increase" @click="increase">加</button>
+        </div>
+    </div>
+</main>   
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+    <script src="add.js"></script>
+     <!-- Mount App -->
+     <script>   
+        const mountedApp = app.mount('.container')
+    </script>
+    <!-- 应用的挂载finish -->
+</body>
+</html>

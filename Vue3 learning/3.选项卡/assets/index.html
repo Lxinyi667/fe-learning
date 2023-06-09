@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <div class="container">
+            <h3>选项卡</h3>
+            <!-- 选项卡标题栏 -->
+            <div class="tab-bar">
+                <ul>
+                    <!-- 遍历tabs数组，给每个tab绑定点击事件，传递当前项在数组中的索引 -->
+                    <li v-for="(tab,index) in tabs" :key="{ index }" @click="changeTab(index)">
+                        <!-- 给a 指定动态样式绑定，当前项在数组中的索引和Vue中的状态数据一致的时候，表示需要激活当前项高亮样式 -->
+                        <a href="#" ：class="currentIdx === index ?'active':' ' ">
+                            {{tab.name}}
+                            <span>{{tab.count}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 遍历tab内容数组，排他性，每次只显示一个，现实条件同上 -->
+            <div v-for="( content , index ) in contents">
+                <div v-if="currentIdx === index" class="tab-content">
+                    <!-- 解析出List属性，再循环 -->
+                    <div v-for="( item, idx) in content.list">
+                        <p>{{item}}</p>
+                       
+                    </div>
+                    <img src="./images/10.JPG" alt="">
+                </div>
+            </div>
+        </div>
+   
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+    <script src="add.js"></script>
+    <!-- Mount App -->
+    <script>   
+        const mountedApp = app.mount('.container')
+    </script>
+    <!-- 应用的挂载finish -->
+</body>
+</html>

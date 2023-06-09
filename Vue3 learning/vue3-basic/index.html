@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2>{{ title }}</h2>
+        <h3>{{ publishMsg }}</h3>
+        <h2>计算价格</h2>
+        <div id="sum">
+            <div v-for="a in msg">
+                {{a.name}}:<input type="text" :value="a.price" />
+                <button @click="a.num++">+</button>
+                <div>
+                    数量：{{a.num}}
+                </div>
+            </div>
+            <div>
+				总金额：{{sum}}
+			</div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+    <script>
+        const mountedApp = app.mount("#root");
+    </script>
+</body>
+</html>

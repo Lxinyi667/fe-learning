@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+/>
+<title>选项卡</title>
+<style>
+    :root {
+        --grey: #5b5757;
+        --blue: #c06be4;
+    }
+    *,
+    ::after,
+    ::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    ul {
+        list-style-type: none;
+    }
+    a {
+        text-decoration: none;
+        color: var(--grey);
+    }
+    .container {
+        width: 50%;
+        margin: 0 auto;
+    }
+    .tab-bar ul {
+        display: flex;
+        justify-content: space-around;
+    }
+    .tab-bar li {
+        padding: 10px 20px;
+    }
+    .tab-bar a {
+        padding-bottom: 8px;
+    }
+    .tab-bar span {
+        font-size: 13px;
+    }
+    .tab-content {
+        min-height: 400px;
+        border: 1px solid var(--blue);
+        border-radius: 4px;
+        margin-top: 10px;
+        padding: 30px;
+        color: var(--grey);
+        position: relative;
+       
+    }
+    .active {
+        color: var(--blue);
+        font-weight: bold;
+        border-bottom: 2px solid var(--blue);
+    }
+    .image{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        bottom: 50px;
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h3>选项卡</h3>
+            <!-- 选项卡标题栏 -->
+            <div class="tab-bar">
+                <ul>
+                    <!-- 遍历 tabs 数组 ，给每个 tab 绑定点击事件，传递当前项在数组中的索引
+                    -->
+                    <li v-for="(tab, index) in tabs" :key="{ index }"
+                    @click="changeTab(index)">
+                        <!-- 给 a 指定动态样式绑定，当前项在数组中的索引和 Vue 中的状态数据⼀致
+                        的时候，表示需要激活当前项⾼亮样式 -->
+                        <a href="#" :class="currentIdx === index ? 'active' : ''">
+                        {{ tab.name }}
+                        <span>({{ tab.count }})</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 遍历 tab 内容数组，排他性，每次只显示⼀个，显示条件同上 -->
+            <div v-for="(content, index) in contents">
+                <div v-if="currentIdx === index" class="tab-content">
+                    <!-- 解析出 list 属性，再循环 -->
+                    <div v-for="(item, idx) in content.list">
+                        <p>{{ item }}</p><br>
+                        
+                    </div>
+                    <img :src="content.image1" alt="" class="image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
